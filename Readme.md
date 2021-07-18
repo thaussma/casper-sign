@@ -8,6 +8,26 @@ A Docker image that signs and verifies your email address to claim your rewards 
 
 ## Usage 
 
+### Use prebuild image
+
+```
+$ export KEYS_FOLDER=/abs/path/to/validator_keys
+$ export EMAIL=your.email@add.ress
+$ docker run --rm -v "${KEYS_FOLDER}":/etc/casper/validator_keys \
+      -it thaussma/casper-sign ./sign-verify.sh "${EMAIL}"
+
+Signing your.email@add.ress
+Public Key:
+ 01e08fb25d24b30903840958509489430483934585896845684275894259348567
+Message:
+ your.email@add.ress
+Signature:
+  0b5749ea0957397eaec1d1e84bd6b4cf0770333f8850e3064b5fee3e37351f89aa904b185d1f89aa900e63326513c82f60464456fa42a08627c7bde4b049347
+Verified!         
+```
+
+### Build the image yourself
+
 1. Clone this repo and cd into it
 2. Run `make` with variables:
    * `EMAIL`: your email address
